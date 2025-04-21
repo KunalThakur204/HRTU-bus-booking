@@ -1,0 +1,87 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | HRTU Transport</title>
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Overlay for animation effect -->
+  <div class="overlay"></div>
+
+  <!-- Header with Navigation and Banner -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="images/logo.png" alt="HRTU Transport Logo" class="logo-img large-logo" />
+      </div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="routes.html">Routes</a>
+        <a href="booking.html">Booking</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+    </nav>
+
+    <div class="banner contact-banner">
+      <h1>Contact Us</h1>
+      <p>We’d love to hear from you!</p>
+    </div>
+  </header>
+
+  <!-- Main Contact Section -->
+  <main class="grid-container contact-page">
+    <!-- Contact Details Section -->
+    <section class="contact-details">
+        <h2>📍 Address</h2>
+        <p>
+          नगर पंचायत सिहुंता<br />
+          सचिव, ब्लॉक चोवाड़ी<br />
+          जिला चम्बा, हिमाचल प्रदेश - 176207
+        </p>
+      
+      <h2>🌐 Follow Us</h2>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/hrtutransport" class="social ig"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.snapchat.com/add/hrtutransport" class="social sc"><i class="fab fa-snapchat-ghost"></i></a>
+        <a href="https://twitter.com/hrtutransport" class="social x"><i class="fab fa-twitter"></i></a>
+        <a href="https://t.me/hrtutransport" class="social tg"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+    </section>
+
+    <!-- Google Map Integration -->
+    <section class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13722.381161290862!2d76.10115459302304!3d32.56315921686626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391c8fbdd13fc9a5%3A0x41a66fe9d3e9d650!2sSihunta%2C%20Himachal%20Pradesh%20176207!5e0!3m2!1sen!2sin!4v1712744401331!5m2!1sen!2sin" 
+        width="100%" height="300" style="border:0; border-radius: 12px; box-shadow: 0 0 10px #000;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </section>
+  </main>
+
+  <!-- New Form Section -->
+  <section class="contact-form-section">
+    <h2>📨 Send Us a Message</h2>
+    <form id="contactForm" class="form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 HRTU Transport. All rights reserved.</p>
+  </footer>
+
+  <!-- Link to external JavaScript (for form validation and other interactivity) -->
+  <script src="js/script.js"></script>
+</body>
+</html>

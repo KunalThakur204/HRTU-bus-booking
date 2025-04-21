@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HRTU Bus Routes & Timetable</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1>🚌 HRTU Bus Routes & Timetable</h1>
+    <p>Explore available buses, departure times, routes, and fares.</p>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>📋 Complete Bus Route Chart</h2>
+      <table id="busRouteTable" class="bus-table">
+        <thead>
+          <tr>
+            <th>Bus No.</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure</th>
+            <th>Route (Via)</th>
+            <th>Distance</th>
+            <th>Fare (₹)</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JavaScript will fill this -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 HRTU Transport. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const buses = [
+  // Chamba to Other Destinations
+  { name: 'HRTU-132', source: 'Chamba', destination: 'Shimla', departure: '06:00 AM', route: ['Chamba', 'Chowari', 'Sihunta', 'Shahpur', 'Palampur', 'Baijnath', 'Shimla'], kilometers: 210, price: 360, type: 'intercity' },
+  { name: 'HRTU-133', source: 'Chamba', destination: 'Manali', departure: '07:00 AM', route: ['Chamba', 'Chowari', 'Sihunta', 'Shahpur', 'Kangra', 'Mandi', 'Kullu', 'Manali'], kilometers: 270, price: 460, type: 'intercity' },
+  { name: 'HRTU-134', source: 'Chamba', destination: 'Kullu', departure: '09:00 AM', route: ['Chamba', 'Chowari', 'Sihunta', 'Shahpur', 'Palampur', 'Mandi', 'Kullu'], kilometers: 180, price: 340, type: 'intercity' },
+  
+  // New Routes Added
+  { name: 'HRTU-160', source: 'Chamba', destination: 'Dehra', departure: '07:30 AM', route: ['Chamba', 'Chowari', 'Sihunta', 'Shahpur', 'Dehra'], kilometers: 160, price: 280, type: 'intercity' },
+  { name: 'HRTU-161', source: 'Chamba', destination: 'Shri Mata Jwala Ji', departure: '08:00 AM', route: ['Chamba', 'Sihunta', 'Shahpur', 'Nadaun', 'Shri Mata Jwala Ji'], kilometers: 170, price: 300, type: 'intercity' },
+  { name: 'HRTU-162', source: 'Chamba', destination: 'Nadaun', departure: '09:30 AM', route: ['Chamba', 'Chowari', 'Sihunta', 'Nadaun'], kilometers: 120, price: 220, type: 'intercity' },
+  { name: 'HRTU-163', source: 'Chamba', destination: 'Mata Chintpurni', departure: '10:30 AM', route: ['Chamba', 'Sihunta', 'Shahpur', 'Nadaun', 'Mata Chintpurni'], kilometers: 130, price: 240, type: 'intercity' },
+  { name: 'HRTU-164', source: 'Chamba', destination: 'Bilaspur', departure: '12:00 PM', route: ['Chamba', 'Chowari', 'Sihunta', 'Bilaspur'], kilometers: 200, price: 350, type: 'intercity' },
+  { name: 'HRTU-165', source: 'Chamba', destination: 'Deotshidh', departure: '01:00 PM', route: ['Chamba', 'Chowari', 'Sihunta', 'Deotshidh'], kilometers: 190, price: 340, type: 'intercity' },
+  
+  // Jammu & Katra Routes
+  { name: 'HRTU-166', source: 'Chamba', destination: 'Katra', departure: '02:00 PM', route: ['Chamba', 'Udhampur', 'Katra'], kilometers: 230, price: 400, type: 'intercity' },
+  { name: 'HRTU-167', source: 'Chamba', destination: 'Jawali', departure: '03:00 PM', route: ['Chamba', 'Sihunta', 'Shahpur', 'Jawali'], kilometers: 150, price: 270, type: 'intercity' },
+  { name: 'HRTU-168', source: 'Chamba', destination: 'Rehan', departure: '04:00 PM', route: ['Chamba', 'Chowari', 'Sihunta', 'Rehan'], kilometers: 140, price: 250, type: 'intercity' },
+  
+  // Other Routes
+  { name: 'HRTU-169', source: 'Chamba', destination: 'Fatehpur', departure: '05:00 PM', route: ['Chamba', 'Sihunta', 'Shahpur', 'Fatehpur'], kilometers: 160, price: 280, type: 'intercity' },
+  { name: 'HRTU-170', source: 'Chamba', destination: '32-Ranital', departure: '06:00 PM', route: ['Chamba', 'Sihunta', 'Shahpur', '32-Ranital'], kilometers: 120, price: 220, type: 'intercity' },
+  { name: 'HRTU-171', source: 'Chamba', destination: 'Nagrota Suriyan', departure: '07:00 PM', route: ['Chamba', 'Chowari', 'Sihunta', 'Nagrota Suriyan'], kilometers: 180, price: 320, type: 'intercity' },
+  { name: 'HRTU-172', source: 'Chamba', destination: 'Nagrota Bagwan', departure: '08:00 PM', route: ['Chamba', 'Chowari', 'Sihunta', 'Nagrota Bagwan'], kilometers: 200, price: 350, type: 'intercity' },
+
+  // Kullu, Manali, Dharamshala Routes (existing routes for reference)
+  { name: 'HRTU-141', source: 'Manali', destination: 'Dharamshala', departure: '08:00 AM', route: ['Manali', 'Kullu', 'Mandi', 'Dharamshala'], kilometers: 220, price: 380, type: 'intercity' },
+  { name: 'HRTU-142', source: 'Manali', destination: 'Kullu', departure: '09:30 AM', route: ['Manali', 'Kullu'], kilometers: 40, price: 80, type: 'intracity' },
+  { name: 'HRTU-143', source: 'Manali', destination: 'Chandigarh', departure: '11:00 AM', route: ['Manali', 'Kullu', 'Mandi', 'Solan', 'Chandigarh'], kilometers: 300, price: 550, type: 'intercity' },
+  { name: 'HRTU-144', source: 'Manali', destination: 'Jammu', departure: '01:00 PM', route: ['Manali', 'Kullu', 'Mandi', 'Pathankot', 'Jammu'], kilometers: 350, price: 600, type: 'intercity' },
+  
+  { name: 'HRTU-145', source: 'Dharamshala', destination: 'Shimla', departure: '07:00 AM', route: ['Dharamshala', 'Kangra', 'Shimla'], kilometers: 160, price: 270, type: 'intercity' },
+  { name: 'HRTU-146', source: 'Dharamshala', destination: 'Chandigarh', departure: '08:00 AM', route: ['Dharamshala', 'Kangra', 'Palampur', 'Solan', 'Chandigarh'], kilometers: 230, price: 400, type: 'intercity' },
+  { name: 'HRTU-147', source: 'Dharamshala', destination: 'Kullu', departure: '11:00 AM', route: ['Dharamshala', 'Palampur', 'Mandi', 'Kullu'], kilometers: 180, price: 320, type: 'intercity' },
+  
+  // Kangra to Other Destinations
+  { name: 'HRTU-149', source: 'Kangra', destination: 'Shimla', departure: '06:00 AM', route: ['Kangra', 'Palampur', 'Shimla'], kilometers: 170, price: 300, type: 'intercity' },
+  { name: 'HRTU-150', source: 'Kangra', destination: 'Chandigarh', departure: '08:30 AM', route: ['Kangra', 'Palampur', 'Solan', 'Chandigarh'], kilometers: 220, price: 380, type: 'intercity' },
+  { name: 'HRTU-151', source: 'Kangra', destination: 'Chamba', departure: '10:00 AM', route: ['Kangra', 'Palampur', 'Chamba'], kilometers: 110, price: 220, type: 'intercity' },
+  
+  // Chamba to Jammu and Other Destinations
+  { name: 'HRTU-153', source: 'Chamba', destination: 'Jammu', departure: '02:30 PM', route: ['Chamba', 'Udhampur', 'Jammu'], kilometers: 200, price: 340, type: 'intercity' },
+  { name: 'HRTU-154', source: 'Chamba', destination: 'Pathankot', departure: '04:00 PM', route: ['Chamba', 'Chowari', 'Sihunta', 'Shahpur', 'Kangra', 'Pathankot'], kilometers: 150, price: 250, type: 'intercity' },
+  { name: 'HRTU-155', source: 'Chamba', destination: 'Kullu', departure: '05:00 PM', route: ['Chamba', 'Chowari', 'Sihunta', 'Shahpur', 'Palampur', 'Mandi', 'Kullu'], kilometers: 180, price: 320, type: 'intercity' },
+
+  // Other destinations like Kullu, Mandi, etc.
+  { name: 'HRTU-156', source: 'Kullu', destination: 'Mandi', departure: '06:30 AM', route: ['Kullu', 'Aut', 'Mandi'], kilometers: 70, price: 150, type: 'intracity' },
+  { name: 'HRTU-157', source: 'Mandi', destination: 'Shimla', departure: '08:00 AM', route: ['Mandi', 'Kullu', 'Shimla'], kilometers: 150, price: 250, type: 'intercity' },
+  { name: 'HRTU-158', source: 'Jammu', destination: 'Mandi', departure: '09:30 AM', route: ['Jammu', 'Udhampur', 'Pathankot', 'Mandi'], kilometers: 270, price: 460, type: 'intercity' },
+  { name: 'HRTU-159', source: 'Mandi', destination: 'Chandigarh', departure: '11:30 AM', route: ['Mandi', 'Solan', 'Chandigarh'], kilometers: 180, price: 310, type: 'intercity' },
+];
+    
+        // Function to render bus routes in the table   
+
+function renderBusRoutes(busData) {
+  const tableBody = document.querySelector("#busRouteTable tbody");
+
+  busData.forEach(bus => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${bus.name}</td>
+      <td>${bus.source}</td>
+      <td>${bus.destination}</td>
+      <td>${bus.departure}</td>
+      <td>${bus.route.join(" → ")}</td>
+      <td>${bus.kilometers} km</td>
+      <td>₹${bus.price}</td>
+      <td>${bus.type}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderBusRoutes(buses);
+});
+
+  </script>
+</body>
+</html>
+

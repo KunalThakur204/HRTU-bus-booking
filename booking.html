@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HRTU Bus Booking</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1>🚌 Book Your HRTU Bus Ticket</h1>
+  </header>
+
+  <main class="container">
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="text" id="source" placeholder="From" required />
+      <input type="text" id="destination" placeholder="To" required />
+      <input type="time" id="time" required />
+      <input type="number" id="seats" placeholder="No. of Seats" required />
+      <button type="submit">Book Ticket</button>
+    </form>
+
+    <h2>📋 Your Bookings</h2>
+    <table id="bookingTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Time</th>
+          <th>Seats</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 HRTU Transport</p>
+  </footer>
+
+  <script>
+    let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+let editIndex = null;
+
+const form = document.getElementById('bookingForm');
+const tableBody = document.querySelector('#bookingTable tbody');
+
+function saveToLocalStorage() {
+  localStorage.setItem('bookings', JSON.stringify(bookings));
+}
+
+function renderTable() {
+  tableBody.innerHTML = "";
+  bookings.forEach((booking, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${booking.name}</td>
+      <td>${booking.source}</td>
+      <td>${booking.destination}</td>
+      <td>${booking.time}</td>
+      <td>${booking.seats}</td>
+      <td>
+        <button onclick="editBooking(${index})">Edit</button>
+        <button onclick="deleteBooking(${index})">Delete</button>
+      </td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const booking = {
+    name: form.name.value,
+    source: form.source.value,
+    destination: form.destination.value,
+    time: form.time.value,
+    seats: form.seats.value,
+  };
+
+  if (editIndex !== null) {
+    bookings[editIndex] = booking;
+    editIndex = null;
+  } else {
+    bookings.push(booking);
+  }
+
+  saveToLocalStorage();
+  renderTable();
+  form.reset();
+});
+
+function deleteBooking(index) {
+  bookings.splice(index, 1);
+  saveToLocalStorage();
+  renderTable();
+}
+
+function editBooking(index) {
+  const booking = bookings[index];
+  form.name.value = booking.name;
+  form.source.value = booking.source;
+  form.destination.value = booking.destination;
+  form.time.value = booking.time;
+  form.seats.value = booking.seats;
+  editIndex = index;
+}
+
+renderTable();
+
+  </script>
+</body>
+</html>
