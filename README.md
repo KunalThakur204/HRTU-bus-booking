@@ -75,9 +75,17 @@ Edit
 
 > Replace the placeholders below with real screenshots from your project:
 
-| Booking Form | Booking List (LocalStorage) | Route Chart |
-|--------------|------------------------------|-------------|
-| ![Form](screenshots/form.png) | ![List](screenshots/bookings.png) | ![Route](screenshots/routes.png) |
+| Booking Form | 
+|--------------|
+| ![Form]![Image](https://github.com/user-attachments/assets/82d8c129-dc3b-4b74-804b-1056bf76e337)
+|--------------|
+Booking List (LocalStorage) |
+|--------------|
+|![List]![Image](https://github.com/user-attachments/assets/0b7ca41a-6e0a-4a7e-a027-1d9b216bbf26) 
+|--------------|
+Route Chart |
+|--------------|
+|![Route]![Image](https://github.com/user-attachments/assets/0f95e26d-e07c-44b6-9a19-1640c713cf52)  |
 
 ---
 
